@@ -1,0 +1,29 @@
+{
+  "id": "tv.waldoandfriends.vandebron",
+  "version": "1.0.0",
+  "compatibility": ">=12.1.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "Vandebron"
+  },
+  "description": {
+    "en": "Goeie energie, rechtstreeks Vandebron"
+  },
+  "brandColor": "#333d47",
+  "category": [
+    "energy"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Wouter Janson-Korhorn",
+    "email": "wouterjanson@icloud.com"
+  }
+}

@@ -1,0 +1,205 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "tv.waldoandfriends.vandebron",
+  "version": "1.0.0",
+  "compatibility": ">=12.1.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "Vandebron"
+  },
+  "description": {
+    "en": "Goeie energie, rechtstreeks Vandebron"
+  },
+  "brandColor": "#333d47",
+  "category": [
+    "energy"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Wouter Janson-Korhorn",
+    "email": "wouterjanson@icloud.com"
+  },
+  "flow": {
+    "triggers": [
+      {
+        "id": "alarm_greenest_moment_true",
+        "title": {
+          "en": "Greenest moment started",
+          "nl": "Groenste moment gestart"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=vandebron"
+          }
+        ]
+      },
+      {
+        "id": "alarm_greenest_moment_false",
+        "title": {
+          "en": "Greenest moment ended",
+          "nl": "Groenste moment geëindigd"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=vandebron"
+          }
+        ]
+      }
+    ],
+    "conditions": [
+      {
+        "id": "greenest_moment_now",
+        "title": {
+          "en": "Greenest moment !{{is|isn't}} now",
+          "nl": "Groenste moment !{{is|is niet}} nu"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=vandebron"
+          }
+        ]
+      }
+    ]
+  },
+  "drivers": [
+    {
+      "name": {
+        "en": "Vandebron Account",
+        "nl": "Vandebron Account"
+      },
+      "class": "other",
+      "capabilities": [
+        "alarm_greenest_moment",
+        "greenest_moment",
+        "measure_green_energy"
+      ],
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [],
+      "images": {
+        "small": "/drivers/vandebron/assets/images/small.png",
+        "large": "/drivers/vandebron/assets/images/large.png",
+        "xlarge": "/drivers/vandebron/assets/images/xlarge.png"
+      },
+      "pair": [
+        {
+          "id": "login_credentials",
+          "template": "login_credentials",
+          "options": {
+            "logo": "logo.png",
+            "title": {
+              "en": "Login with your Vandebron account",
+              "nl": "Log in met je Vandebron account"
+            },
+            "usernameLabel": {
+              "en": "Username",
+              "nl": "Gebruikersnaam"
+            },
+            "usernamePlaceholder": {
+              "en": "example@email.com",
+              "nl": "voorbeeld@email.nl"
+            },
+            "passwordLabel": {
+              "en": "Password",
+              "nl": "Wachtwoord"
+            },
+            "passwordPlaceholder": {
+              "en": "Password",
+              "nl": "Wachtwoord"
+            }
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "id": "vandebron"
+    }
+  ],
+  "widgets": {
+    "greenest-moment": {
+      "name": {
+        "en": "Greenest moment"
+      },
+      "height": 80,
+      "settings": [],
+      "api": {
+        "getGreenestMoment": {
+          "method": "GET",
+          "path": "/greenest-moment"
+        },
+        "getGreenEnergyPercentage": {
+          "method": "GET",
+          "path": "/green-energy"
+        },
+        "getGreenestMomentAlarm": {
+          "method": "GET",
+          "path": "/greenest-moment-alarm"
+        }
+      },
+      "id": "greenest-moment"
+    }
+  },
+  "capabilities": {
+    "alarm_greenest_moment": {
+      "type": "boolean",
+      "title": {
+        "en": "Greenest moment active",
+        "nl": "Groenste moment actief"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/images/leaf-solid.svg"
+    },
+    "greenest_moment": {
+      "type": "string",
+      "title": {
+        "en": "Greenest moment today",
+        "nl": "Groenste moment vandaag"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/images/clock-regular.svg"
+    },
+    "measure_green_energy": {
+      "type": "number",
+      "title": {
+        "en": "Green energy on the grid",
+        "nl": "Groene energie op het net"
+      },
+      "units": {
+        "en": "%",
+        "nl": "%"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/images/leaf-solid.svg"
+    }
+  }
+}

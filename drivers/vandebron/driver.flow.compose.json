@@ -1,0 +1,27 @@
+{
+  "triggers": [
+    {
+      "id": "alarm_greenest_moment_true",
+      "title": {
+        "en": "Greenest moment started",
+        "nl": "Groenste moment gestart"
+      }
+    },
+    {
+      "id": "alarm_greenest_moment_false",
+      "title": {
+        "en": "Greenest moment ended",
+        "nl": "Groenste moment geëindigd"
+      }
+    }
+  ],
+  "conditions": [
+    {
+      "id": "greenest_moment_now",
+        "title": {
+            "en": "Greenest moment !{{is|isn't}} now",
+            "nl": "Groenste moment !{{is|is niet}} nu"
+        }
+    }
+  ]
+}

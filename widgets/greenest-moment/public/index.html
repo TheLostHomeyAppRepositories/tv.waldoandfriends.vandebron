@@ -1,0 +1,114 @@
+<html>
+<head>
+    <style>
+        body {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        svg {
+            height: 50px;
+            color: var(--homey-color-mono-300);
+        }
+
+        #content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: center;
+            height: 100%;
+        }
+
+        #green-window {
+            font-size: var(--homey-font-size-xxlarge);
+            font-weight: var(--homey-font-weight-bold);
+            color: var(--homey-color-green-600);
+        }
+
+        /*active state overrides*/
+        body[data-active="true"] {
+            /* Add a background gradient from --homey-color-green-500 to --homey-color-green-600 */
+            background: linear-gradient(45deg, var(--homey-color-green-500), var(--homey-color-green-600));
+        }
+
+        body[data-active="true"] svg {
+            color: var(--homey-color-green-050);
+        }
+
+        body[data-active="true"] #content #green-window {
+            color: var(--homey-color-green-050);
+        }
+
+        body[data-active="true"] #content #green-info {
+            color: var(--homey-color-green-100);
+        }
+    </style>
+</head>
+
+<body class="homey-widget">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 19">
+        <g>
+            <path d="M13.51 6.828h-2.746l4.83 8.796c.381.604-.059 1.388-.78 1.388H7.02a3.866 3.866 0 0 1-3.164 1.63C1.726 18.642 0 16.938 0 14.836c0-2.102 1.727-3.806 3.856-3.806 1.344 0 2.527.678 3.217 1.706h2.222l-4.8-8.622c-.379-.6.059-1.378.776-1.378h8.234l.24-1.906h.01a.495.495 0 0 1 .793-.348l5.15 3.91a.486.486 0 0 1 0 .777l-5.15 3.91a.497.497 0 0 1-.799-.388v-.005h-.004l-.234-1.858z"
+                  fill-rule="evenodd" fill="currentColor"/>
+        </g>
+    </svg>
+
+    <div id="content">
+        <p id="green-window"></p>
+        <p id="green-info" class="homey-text-small-light"></p>
+    </div>
+
+
+<script type="text/javascript">
+  function onHomeyReady(Homey) {
+    // call loadDate on window resize
+    window.addEventListener('load', () => {
+      // prepend body with p tag to debug
+        document.body.prepend(document.createElement('p').innerText = 'resize');
+    });
+
+    Homey.api('GET', '/greenest-moment', {})
+      .then((result) => {
+        document.getElementById('green-window').innerText = result;
+      })
+      .catch(console.error);
+
+    Homey.api('GET', '/green-energy', {})
+      .then((result) => {
+        document.getElementById('green-info').innerText = Homey.__("currently") + result + '% ' + Homey.__("green-energy");
+      })
+      .catch(console.error);
+
+    Homey.api('GET', '/greenest-moment-alarm', {})
+      .then((result) => {
+        if (result) {
+          document.body.setAttribute('data-active', 'true');
+        } else {
+          document.body.setAttribute('data-active', 'false');
+        }
+      })
+      .catch(console.error);
+
+    Homey.on('greenest_moment', (value) => {
+      document.getElementById('green-window').innerText = value;
+    });
+
+    Homey.on('measure_green_energy', (percentage) => {
+      document.getElementById('green-info').innerText =  Homey.__("currently") + percentage + '% ' + Homey.__("green-energy");
+    });
+
+    Homey.on('alarm_greenest_moment', (value) => {
+      if (value) {
+        document.body.setAttribute('data-active', 'true');
+      } else {
+        document.body.setAttribute('data-active', 'false');
+      }
+    });
+
+    Homey.ready({ height: 80 });
+  }
+</script>
+</body>
+</html>

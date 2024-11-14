@@ -1,0 +1,15 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Green energy on the grid",
+    "nl": "Groene energie op het net"
+  },
+  "units": {
+    "en": "%",
+    "nl": "%"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "icon": "/assets/images/leaf-solid.svg"
+}

@@ -1,0 +1,21 @@
+{
+  "name": {
+    "en": "Greenest moment"
+  },
+  "height": 80,
+  "settings": [],
+  "api": {
+    "getGreenestMoment": {
+      "method": "GET",
+      "path": "/greenest-moment"
+    },
+    "getGreenEnergyPercentage": {
+      "method": "GET",
+      "path": "/green-energy"
+    },
+    "getGreenestMomentAlarm": {
+      "method": "GET",
+      "path": "/greenest-moment-alarm"
+    }
+  }
+}

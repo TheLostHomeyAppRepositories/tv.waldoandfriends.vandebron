@@ -1,0 +1,11 @@
+{
+  "type": "string",
+  "title": {
+    "en": "Greenest moment today",
+    "nl": "Groenste moment vandaag"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "icon": "/assets/images/clock-regular.svg"
+}

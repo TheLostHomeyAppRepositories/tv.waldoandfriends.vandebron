@@ -1,0 +1,3 @@
+De Vandebron-app voor Homey biedt inzicht in het 'Groenste moment' van de dag, zodat je duurzame energie optimaal kunt benutten. Door gebruik te maken van deze informatie kun je huishoudelijke apparaten aansturen op momenten met de hoogste beschikbaarheid van groene stroom. Zo maak je bewuste keuzes en draag je bij aan een duurzamer energieverbruik.
+
+Disclaimer: deze app geeft geen inzicht in je energieverbruik, omdat er via de Vandebron API vaak meer dan een dag vertraging in deze gegevens zit.
