@@ -7,10 +7,12 @@
     "local"
   ],
   "name": {
-    "en": "Vandebron"
+    "en": "Vandebron",
+    "nl": "Vandebron"
   },
   "description": {
-    "en": "Goeie energie, rechtstreeks Vandebron"
+    "en": "Good energy, directly Vandebron",
+    "nl": "Goeie energie, rechtstreeks Vandebron"
   },
   "brandColor": "#333d47",
   "category": [
