@@ -20,17 +20,17 @@ module.exports = class VandebronDevice extends OAuth2Device {
 
     // Set intervals
     this.homey.setInterval(async () => {
-      // Token validity seems to be flaky, so we refresh it every hour
-      await this.oAuth2Client.refreshToken();
-
       // Sync data from the API
       await this.syncGreenestMomentInfo();
       await this.setGreenestMomentCapability();
     }, 60 * 60 * 1000); // every hour
 
     this.homey.setInterval(async () => {
+      // Token validity seems to be flaky, so we refresh it every 10 minutes
+      await this.oAuth2Client.refreshToken();
+      
       await this.syncGreenEnergyPercentage();
-    }, 15 * 60 * 1000); // every 15 minutes
+    }, 10 * 60 * 1000); // every 10 minutes
 
     this.homey.setInterval(async () => {
       await this.setAlarmGreenestMomentCapability();
