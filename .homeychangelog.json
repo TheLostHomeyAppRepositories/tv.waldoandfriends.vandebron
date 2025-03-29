@@ -16,5 +16,8 @@
   },
   "1.0.5": {
     "en": "Added agressive token refresh (device might need to be readded)"
+  },
+  "1.0.6": {
+    "en": "Try and patch token problems"
   }
 }
